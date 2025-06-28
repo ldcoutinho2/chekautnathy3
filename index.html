@@ -1,150 +1,179 @@
+<!-- index.html atualizado -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔒 Pagamento Privado - Nathy</title>
-    <link rel="icon" href="logo.png">
-
-    <!-- Meta Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1032381935101857');
-      fbq('track', 'PageView');
-    </script>
-    <noscript>
-      <img height="1" width="1" style="display:none"
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1032381935101857');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1032381935101857&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- End Meta Pixel Code -->
+  </noscript>
+  <!-- End Meta Pixel Code -->
 
-    <style>
-        body {
-            background-color: #000;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #111;
-            border-radius: 12px;
-            box-shadow: 0 0 20px #ff0077;
-        }
-        h1 {
-            color: #ff0077;
-        }
-        .alert {
-            background-color: #ff0077;
-            padding: 8px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        .pix-code {
-            background-color: #222;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 10px 0;
-            word-break: break-word;
-            font-size: 14px;
-        }
-        .btn {
-            background-color: #ff0077;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin: 10px 0;
-        }
-        .btn:hover {
-            background-color: #e6006f;
-        }
-        .timer {
-            font-size: 18px;
-            color: #ff0077;
-            margin-top: 10px;
-        }
-        .footer {
-            margin-top: 30px;
-            font-size: 12px;
-            color: #777;
-        }
-        .banner {
-            width: 100%;
-            margin-bottom: 20px;
-            border-radius: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy | Natasha Steele</title>
+
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body { font-family: "Inter", sans-serif; }
+    .payment-overlay {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      z-index: 1000;
+      transition: left 0.5s ease-in-out;
+    }
+    .payment-overlay.active {
+      left: 0;
+    }
+    .payment-iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
 </head>
-<body>
 
-<div class="container">
-    <img src="banner2.png" class="banner" alt="Banner +18">
+<body class="bg-gray-100">
 
-    <div class="alert">🚨 ATENÇÃO: Pagamento protegido para sua chamada de vídeo privada com a Nathy</div>
-    <h1>🔒 Pagamento Seguro</h1>
-    <p>Finalize seu pagamento AGORA e tenha acesso IMEDIATO à chamada de vídeo sem censura... Só eu e você!</p>
-
-    <h3>⬇️ Copia o código PIX abaixo e faz o pagamento:</h3>
-    <div class="pix-code" id="pixCode">
-        00020101021226800014br.gov.bcb.pix2558pix.delbank.com.br/v2/cob/vchargebd19e0433b824a05b7f161b195204000053039865802BR5907DELBANK6007ARACAJU62070503***6304360A
+<!-- Navbar -->
+<nav class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-center items-center h-16">
+      <img class="h-9 w-auto" src="images/privacy.svg" alt="Logo">
     </div>
-    <button class="btn" onclick="copiarPix(); fbq('track', 'InitiateCheckout')">📋 Copiar Código PIX</button>
+  </div>
+</nav>
 
-    <div class="timer">⏳ Código expira em: <span id="countdown">05:00</span></div>
+<!-- Banner e Perfil -->
+<div class="relative max-w-3xl mx-auto rounded-bottom-3">
+  <img class="w-full h-64 object-cover" src="images/baner2.webp" alt="Banner">
+  <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+  <div class="absolute bottom-4 right-4 text-white">82 posts • 86k likes</div>
+  <div class="absolute -bottom-16 left-6">
+    <img class="h-24 w-24 rounded-full border-4 border-white object-cover" src="images/IMG-20250615-WA0327.jpg" alt="Perfil">
+  </div>
+</div>
 
-    <br>
-    <a href="https://api.whatsapp.com/send?phone=5521968068902&text=realizei%20o%20pagamento%20e%20quero%20fazer%20minha%20chamada%20de%20video%20nathy" class="btn" id="confirmar" style="display:none;" onclick="fbq('track', 'Purchase')">
-        ✅ JÁ PAGUEI - QUERO LIBERAÇÃO!
-    </a>
-
-    <div class="footer">
-        <p>Site independente. Nenhum vínculo com Instagram, Meta ou qualquer rede social.</p>
-        <p>Produto 100% digital — +18 — Conteúdo Privado</p>
+<!-- Nome e @ -->
+<div class="max-w-3xl mx-auto mt-16 px-6">
+  <div>
+    <div class="flex items-center">
+      <h2 class="text-lg font-bold text-black">Bruna Vasconselos
+</h2> 
+      <img class="h-5 w-5 ml-2" src="images/badge-check.svg" alt="Verificado">
     </div>
+    <p class="text-sm text-gray-600">@bruna_vasconselos__</p> 
+  </div>
+</div>
+
+<!-- Detalhes -->
+<div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg mt-4">
+  <p id="profile-details" class="text-gray-800 text-sm blurred">Meu amor… resistir pra quê? Você quer me ver, me ter, me gozar… e eu tô aqui só pra isso. 😈 Por um valor que nem dói, tu desbloqueia +800 conteúdos explícitos: 📸 Peladinha, brincando, provocando… 👯‍♀️ Sozinha, com amigas, sem vergonha e sem censura. 🎥 Vídeos quentes, fotos íntimas, fantasias e muito toque real. 🧠 Sua mente vai surtar… e sua mão não vai dar conta. 💬 Quer mais? Tem chat direto comigo. Fala tua vontade suja… e se for bom, a gente realiza JUNTINHO. 💻 E ainda rola chamada EXCLUSIVA — só eu e você, sem pressa. 👉 Assina agora, para de gozar na ilusão. Aqui é real, ao vivo e sem frescura. 💦</p>
+  <button id="toggleButton" class="mt-2 text-orange-500 hover:text-orange-600">Ver mais</button>
+
+  <!-- Redes sociais -->
+  <div class="flex space-x-3 mt-4">
+    <a href="https://app.pushinpay.com.br/service/pay/9F01488D-40C2-4B66-B30B-59D4BFBDF531" class="icon-circle"><img src="images/x.png" alt="X"></a>
+    <a href="https://app.pushinpay.com.br/service/pay/9F01488D-40C2-4B66-B30B-59D4BFBDF531" class="icon-circle"><img src="images/instagram.png" alt="Instagram"></a>
+    <a href="https://app.pushinpay.com.br/service/pay/9F01488D-40C2-4B66-B30B-59D4BFBDF531" class="icon-circle"><img src="images/tiktok.png" alt="TikTok"></a>
+  </div>
+
+  <!-- Assinatura -->
+  <br>
+  <h6 class="title-subscribe">ASSINATURAS</h6>
+  <a href="https://app.pushinpay.com.br/service/pay/9F01488D-40C2-4B66-B30B-59D4BFBDF531" target="_blank" class="subscribe-btn mt-2">
+    <span>Assinar (1 mês)</span>
+    <span>R$ 14,90 / mês</span>
+  <h6 class="title-subscribe">ASSINATURAS</h6>
+  <a href="https://app.pushinpay.com.br/service/pay/9F01488D-40C2-4B66-B30B-59D4BFBDF531" target="_blank" class="subscribe-btn mt-2">
+    <span>Assinar (3 meses)</span>
+    <span>R$ 19,90 / meses</span>
+  <h6 class="title-subscribe">ASSINATURAS</h6>
+  <a href="https://app.pushinpay.com.br/service/pay/9F01488D-40C2-4B66-B30B-59D4BFBDF531" target="_blank" class="subscribe-btn mt-2">
+    <span>Assinar (1 ano)</span>
+    <span>R$ 24,90 / 1 ano</span>
+    <h6 class="title-subscribe">ASSINATURAS</h6>
+  </a>
+
+  <div class="stats"><p>82 posts • 49 fotos • 33 vídeos</p></div>
+
+  <div class="image-container mt-4"><img src="images/photo.webp" alt="Imagem"></div>
+
+  <div class="image-container mt-4"><div class="blur"><img src="images/5.webp" alt="Imagem"></div><img class="watermark" style="max-width: 200px" src="images/white-logo.png" alt="Marca d'água"></div>
+  <div class="image-container mt-4"><div class="blur"><img src="images/6.webp" alt="Imagem"></div><img class="watermark" style="max-width: 200px" src="images/white-logo.png" alt="Marca d'água"></div>
+  <div class="image-container mt-4"><div class="blur"><img src="images/7.webp" alt="Imagem"></div><img class="watermark" style="max-width: 200px" src="images/white-logo.png" alt="Marca d'água"></div>
+
+  <div class="video-container mt-4">
+    <div class="blur">
+      <video autoplay muted loop>
+        <source src="media/01.mp4" type="video/mp4">Seu navegador não suporta vídeos HTML5.
+      </video>
+    </div>
+    <img class="watermark" src="images/white-logo.png" alt="Marca d'água">
+  </div>
+
+  <div class="stats"><p>82 posts • 49 fotos • 33 vídeos</p></div>
+
+  <footer>
+    <a href="https://app.pushinpay.com.br/service/pay/9F01488D-40C2-4B66-B30B-59D4BFBDF531">🔒 DESBLOQUEAR TODOS OS CONTEÚDOS 🔒</a>
+  </footer>
 </div>
 
 <script>
-    // Timer regressivo
-    let time = 300;
-    const countdown = document.getElementById('countdown');
+  const toggleButton = document.getElementById("toggleButton");
+  const profileDetails = document.getElementById("profile-details");
 
-    setInterval(() => {
-        const minutes = String(Math.floor(time / 60)).padStart(2, '0');
-        const seconds = String(time % 60).padStart(2, '0');
-        countdown.innerText = `${minutes}:${seconds}`;
-        if(time > 0) time--;
-    }, 1000);
-
-    // Mostrar botão do WhatsApp após 30 segundos
-    setTimeout(() => {
-        document.getElementById('confirmar').style.display = 'block';
-    }, 30000);
-
-    function copiarPix() {
-        const pix = document.getElementById("pixCode").innerText;
-        navigator.clipboard.writeText(pix).then(function() {
-            alert("✅ Código PIX copiado com sucesso!");
-        }, function() {
-            alert("❌ Erro ao copiar. Copia manualmente.");
-        });
+  toggleButton.addEventListener("click", function () {
+    if (profileDetails.classList.contains("blurred")) {
+      profileDetails.classList.remove("blurred");
+      toggleButton.textContent = "Ver menos";
+    } else {
+      profileDetails.classList.add("blurred");
+      toggleButton.textContent = "Ver mais";
     }
+  });
+
+  // Eventos de clique para redirecionar com pixel
+  document.querySelectorAll("a[href]").forEach((a) => {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      try { fbq("track", "InitiateCheckout"); } catch {}
+      const utm = localStorage.getItem("myCustomUTMData");
+      let url = "https://app.pushinpay.com.br/service/pay/9F01488D-40C2-4B66-B30B-59D4BFBDF531";
+      if (utm) {
+        const params = JSON.parse(utm);
+        const pushUrl = new URL(url);
+        for (const key in params) {
+          pushUrl.searchParams.set(key, params[key]);
+        }
+        url = pushUrl.toString();
+      }
+      window.location.href = url;
+    });
+  });
 </script>
 
 </body>
